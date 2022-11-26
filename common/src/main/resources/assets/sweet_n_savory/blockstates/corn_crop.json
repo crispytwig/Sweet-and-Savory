@@ -1,21 +1,21 @@
 {
   "variants": {
-    "age=0": {
+    "age=0,half=lower": {
       "model": "sweet_n_savory:block/corn_stage0"
     },
-    "age=1": {
+    "age=1,half=lower": {
       "model": "sweet_n_savory:block/corn_stage1"
     },
-    "age=2": {
+    "age=2,half=lower": {
       "model": "sweet_n_savory:block/corn_stage2"
     },
-    "age=2, upper=true": {
-      "model": "sweet_n_savory:block/corn_stage2_top"
-    },
-    "age=3": {
+    "age=3,half=lower": {
       "model": "sweet_n_savory:block/corn_stage3"
     },
-    "age=3, upper=true": {
+    "age=2,half=upper": {
+      "model": "sweet_n_savory:block/corn_stage2_top"
+    },
+    "age=3,half=upper": {
       "model": "sweet_n_savory:block/corn_stage3_top"
     }
   }
