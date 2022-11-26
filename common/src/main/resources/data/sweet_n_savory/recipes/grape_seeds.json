@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "sweet_n_savory:grapes"
+    }
+  ],
+  "result": {
+    "item": "sweet_n_savory:grape_seeds",
+    "count": 1
+  }
+}

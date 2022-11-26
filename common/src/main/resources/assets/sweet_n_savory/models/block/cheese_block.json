@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "sweet_n_savory:block/cheese_block"
+    }
+}

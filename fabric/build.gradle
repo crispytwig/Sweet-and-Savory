@@ -19,6 +19,7 @@ configurations {
 
 repositories {
     maven { url "https://maven.terraformersmc.com/" }
+    maven { url "https://cursemaven.com" }
 }
 
 dependencies {
@@ -29,6 +30,10 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+
+
+    // FD Dependency
+    modImplementation "curse.maven:farmersdelightfabric-482834:4104108"
 }
 
 processResources {

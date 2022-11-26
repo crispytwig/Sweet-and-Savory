@@ -1,0 +1,7 @@
+{
+    "parent": "sweet_n_savory:block/cross",
+    "textures": {
+        "particle": "sweet_n_savory:block/corn_stage3_top",
+        "all": "sweet_n_savory:block/corn_stage3_top"
+    }
+}

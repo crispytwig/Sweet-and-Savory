@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "sweet_n_savory:grapes"
+  },
+  "result": "sweet_n_savory:raisins",
+  "experience": 0.1,
+  "cookingtime": 100
+}

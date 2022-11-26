@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "sweet_n_savory:corn"
+    }
+  },
+  "result": {
+    "item": "sweet_n_savory:corn_kernels",
+    "count": 4
+  }
+}

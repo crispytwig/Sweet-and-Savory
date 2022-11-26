@@ -1,29 +1,29 @@
 modLoader = "javafml"
 loaderVersion = "[43,)"
 license = "MIT"
-issueTrackerURL = "https://github.com/starfish-studios/DelightfulDecor/issues"
+issueTrackerURL = "https://github.com/crispytwig/Sweet-and-Savory/issues"
 
 [[mods]]
-modId = "delightful_decor"
+modId = "sweet_n_savory"
 version = "${version}"
-displayName = "delightful_decor"
+displayName = "Sweet n' Savory"
 #updateJSONURL="http://myurl.me/"
-displayURL = "https://www.curseforge.com/minecraft/mc-mods/delightful_decor"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/sweet_n_savory"
 logoFile = "icon.png"
 #credits="Thanks for this example mod goes to Java"
-authors = "Starfish Studios"
+authors = "crispytwig"
 description = '''
 Decorative blocks out of scope to Another Furniture
 '''
 
-[[dependencies.delightful_decor]]
+[[dependencies.sweet_n_savory]]
 modId = "forge"
 mandatory = true
 versionRange = "[43.1.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.delightful_decor]]
+[[dependencies.sweet_n_savory]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19.2,1.20)"

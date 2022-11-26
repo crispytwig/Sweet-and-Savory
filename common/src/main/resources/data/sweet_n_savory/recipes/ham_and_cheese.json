@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "farmersdelight:ham"
+    },
+    {
+      "item": "sweet_n_savory:cheese"
+    }
+  ],
+  "result": {
+    "item": "sweet_n_savory:ham_and_cheese",
+    "count": 1
+  }
+}

@@ -1,30 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "another_furniture",
+  "id": "sweet_n_savory",
   "version": "${version}",
-  "name": "Another Furniture",
+  "name": "Sweet n' Savory",
   "description": "Decorating your home just got better! Another Furniture adds various furniture, with the goal of staying vanilla-styled and consistently sized, keeping normal blocks and player sizes in mind.",
   "authors": [
-    "Starfish Studios"
+    "crispytwig"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/another-furniture",
-    "issues": "https://github.com/starfish-studios/AnotherFurniture/issues"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/sweet-n-savory",
+    "issues": "https://github.com/crispytwig/Sweet-and-Savory/issues"
   },
   "license": "MIT",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.starfish_studios.delightful_decor.fabric.DelightfulDecorFabric"
+      "com.crispytwig.sweet_n_savory.fabric.SweetSavoryFabric"
     ],
     "client": [
-      "com.starfish_studios.delightful_decor.fabric.DelightfulDecorFabricClient"
+      "com.crispytwig.sweet_n_savory.fabric.SweetSavoryFabricClient"
     ]
   },
   "mixins": [
-    "delightful_decor.mixins.json",
-    "delightful_decor-common.mixins.json"
+    "sweet_n_savory.mixins.json",
+    "sweet_n_savory-common.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.9",

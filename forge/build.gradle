@@ -11,8 +11,8 @@ architectury {
 
 loom {
     forge {
-        mixinConfig "delightful_decor-common.mixins.json"
-        mixinConfig "delightful_decor.mixins.json"
+        mixinConfig "sweet_n_savory-common.mixins.json"
+        mixinConfig "sweet_n_savory.mixins.json"
     }
 }
 
@@ -29,6 +29,24 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+
+    // FD Dependency
+    modImplementation ("curse.maven:farmersdelight-398521:3999157")
+
+
+    // Mod Testing
+    modImplementation ("curse.maven:anotherfurniture-610492:4034009")
+    modImplementation ("curse.maven:jei-238222:4087658")
+    modImplementation ("curse.maven:appleskin-248787:3872808")
+}
+
+repositories {
+    maven {
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 processResources {
