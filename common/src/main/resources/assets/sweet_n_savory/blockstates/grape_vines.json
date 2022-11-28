@@ -1,9 +1,9 @@
 {
   "variants": {
-    "grapes=false,age=0": {
+    "grapes=false": {
       "model": "sweet_n_savory:block/grape_vines"
     },
-    "grapes=true,age=0": {
+    "grapes=true": {
       "model": "sweet_n_savory:block/grape_vines_full"
     }
   }

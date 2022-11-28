@@ -1,3 +1,8 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.crispytwig.sweet_n_savory.block;
 
 import com.crispytwig.sweet_n_savory.registry.ModBlocks;
@@ -16,22 +21,23 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 
-import static com.crispytwig.sweet_n_savory.block.GrapeBlock.GRAPES;
-import static net.minecraft.world.level.block.CaveVines.SHAPE;
-public class BottomGrapeBlock extends GrowingPlantBodyBlock implements BonemealableBlock {
+import static com.crispytwig.sweet_n_savory.block.properties.ModBlockStateProperties.GRAPES;
+
+public class BottomGrapeBlock extends GrowingPlantBodyBlock implements BonemealableBlock, CaveVines {
     public BottomGrapeBlock(BlockBehaviour.Properties properties) {
         super(properties, Direction.DOWN, SHAPE, false);
-        this.registerDefaultState((BlockState) ((BlockState) this.stateDefinition.any()).setValue(GRAPES, false));
+        this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(GRAPES, false));
     }
 
     protected GrowingPlantHeadBlock getHeadBlock() {
-        return (GrowingPlantHeadBlock) ModBlocks.BOTTOM_GRAPE_VINES.get();
+        return (GrowingPlantHeadBlock) ModBlocks.GRAPE_VINES.get();
     }
 
     protected BlockState updateHeadAfterConvertedFromBody(BlockState head, BlockState body) {
-        return (BlockState) body.setValue(GRAPES, (Boolean) head.getValue(GRAPES));
+        return (BlockState)body.setValue(GRAPES, (Boolean)head.getValue(GRAPES));
     }
 
     public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
@@ -43,11 +49,11 @@ public class BottomGrapeBlock extends GrowingPlantBodyBlock implements Bonemeala
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(GRAPES);
+        builder.add(new Property[]{GRAPES});
     }
 
     public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
-        return !(Boolean) state.getValue(GRAPES);
+        return !(Boolean)state.getValue(GRAPES);
     }
 
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
@@ -55,6 +61,6 @@ public class BottomGrapeBlock extends GrowingPlantBodyBlock implements Bonemeala
     }
 
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        level.setBlock(pos, (BlockState) state.setValue(GRAPES, true), 2);
+        level.setBlock(pos, (BlockState)state.setValue(GRAPES, true), 2);
     }
 }
