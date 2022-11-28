@@ -31,14 +31,6 @@ import static net.minecraft.world.level.block.CaveVines.SHAPE;
 public class GrapeBlock extends GrowingPlantHeadBlock implements BonemealableBlock {
     private static final float CHANCE_OF_GRAPES_ON_GROWTH = 0.11F;
 
-    @Override
-    public boolean isRandomlyTicking(BlockState state) {
-        return (Integer)state.getValue(AGE) < 0;
-    }
-
-    public static IntegerProperty AGE = null;
-    public static final int MAX_AGE = 0;
-
     public GrapeBlock(Properties properties) {
         super(properties, Direction.DOWN, SHAPE, false, 0.1);
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(GRAPES, false)));
