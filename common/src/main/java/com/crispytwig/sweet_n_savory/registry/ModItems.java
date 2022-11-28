@@ -11,7 +11,8 @@ import static com.crispytwig.sweet_n_savory.registry.ModRegistry.registerItem;
 public class ModItems {
 
     // Foods
-    public static final Supplier<Item> CHEESE = registerItem("cheese", () -> new Item(new Item.Properties().food(ModFoods.CHEESE).tab(SweetSavory.TAB)));
+    public static final Supplier<Item> CHEESE = registerItem("cheese", () -> new ItemNameBlockItem(ModBlocks.CHEESE_BLOCK.get(), new Item.Properties().tab(SweetSavory.TAB)));
+    public static final Supplier<Item> CHEESE_SLICE = registerItem("cheese_slice", () -> new Item(new Item.Properties().food(ModFoods.CHEESE).tab(SweetSavory.TAB)));
     public static final Supplier<Item> CHOCOLATE = registerItem("chocolate", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE).tab(SweetSavory.TAB)));
     public static final Supplier<Item> GRAPES = registerItem("grapes", () -> new Item(new Item.Properties().food(ModFoods.GRAPES).tab(SweetSavory.TAB)));
     public static final Supplier<Item> RAISINS = registerItem("raisins", () -> new Item(new Item.Properties().food(ModFoods.RAISINS).tab(SweetSavory.TAB)));

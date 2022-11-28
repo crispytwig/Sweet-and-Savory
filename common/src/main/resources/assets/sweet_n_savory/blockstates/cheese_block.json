@@ -1,7 +1,13 @@
 {
   "variants": {
-    "": {
+    "type=bottom": {
+      "model": "sweet_n_savory:block/cheese_block_bottom"
+    },
+    "type=double": {
       "model": "sweet_n_savory:block/cheese_block"
+    },
+    "type=top": {
+      "model": "sweet_n_savory:block/cheese_block_top"
     }
   }
 }
