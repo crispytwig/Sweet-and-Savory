@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "grapes=false": {
+      "model": "sweet_n_savory:block/grape_vines_bottom"
+    },
+    "grapes=true": {
+      "model": "sweet_n_savory:block/grape_vines_bottom_full"
+    }
+  }
+}

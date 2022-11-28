@@ -1,0 +1,7 @@
+{
+  "render_type": "cutout",
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "sweet_n_savory:block/grape_vines_bottom_full"
+  }
+}

@@ -27,7 +27,7 @@ public class ModItems {
 
     // Normal Items
     public static final Supplier<Item> CORN_KERNELS = registerItem("corn_kernels", () -> new ItemNameBlockItem(ModBlocks.CORN_CROP.get(), new Item.Properties().tab(SweetSavory.TAB)));
-    public static final Supplier<Item> GRAPE_SEEDS = registerItem("grape_seeds", () -> new ItemNameBlockItem(ModBlocks.GRAPE_VINE.get(), new Item.Properties().tab(SweetSavory.TAB)));
+    public static final Supplier<Item> GRAPE_SEEDS = registerItem("grape_seeds", () -> new ItemNameBlockItem(ModBlocks.GRAPE_VINES.get(), new Item.Properties().tab(SweetSavory.TAB)));
 
     public static void init() {}
 }

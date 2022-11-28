@@ -1,7 +1,0 @@
-{
-    "parent": "sweet_n_savory:block/cross",
-    "textures": {
-        "particle": "sweet_n_savory:block/grapes_stage2",
-        "all": "sweet_n_savory:block/grapes_stage2"
-    }
-}

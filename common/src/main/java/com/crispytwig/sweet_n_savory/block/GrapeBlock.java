@@ -1,99 +1,99 @@
 package com.crispytwig.sweet_n_savory.block;
 
+import com.crispytwig.sweet_n_savory.block.properties.ModBlockStateProperties;
+import com.crispytwig.sweet_n_savory.registry.ModBlocks;
 import com.crispytwig.sweet_n_savory.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class GrapeBlock extends BushBlock implements BonemealableBlock {
-    private static final float HURT_SPEED_THRESHOLD = 0.003F;
-    public static final int MAX_AGE = 3;
-    public static final IntegerProperty AGE;
-    private static final VoxelShape SAPLING_SHAPE;
-    private static final VoxelShape MID_GROWTH_SHAPE;
+import javax.annotation.Nullable;
 
-    public GrapeBlock(BlockBehaviour.Properties properties) {
-        super(properties);
-        this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(AGE, 0));
+import static net.minecraft.world.level.block.CaveVines.SHAPE;
+
+public class GrapeBlock extends GrowingPlantHeadBlock implements BonemealableBlock {
+    private static final float CHANCE_OF_GRAPES_ON_GROWTH = 0.11F;
+
+    @Override
+    public boolean isRandomlyTicking(BlockState state) {
+        return (Integer)state.getValue(AGE) < 0;
+    }
+
+    public static IntegerProperty AGE = null;
+    public static final int MAX_AGE = 0;
+
+    public GrapeBlock(Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false, 0.1);
+        this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(GRAPES, false)));
+    }
+
+    static BooleanProperty GRAPES = ModBlockStateProperties.GRAPES;
+
+    static InteractionResult use(BlockState state, Level level, BlockPos pos) {
+        if ((Boolean)state.getValue(GRAPES)) {
+            Block.popResource(level, pos, new ItemStack(ModItems.GRAPES.get(), 1));
+            float f = Mth.randomBetween(level.random, 0.8F, 1.2F);
+            level.playSound((Player)null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, f);
+            level.setBlock(pos, (BlockState)state.setValue(GRAPES, false), 2);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        } else {
+            return InteractionResult.PASS;
+        }
+    }
+    
+    protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
+        return 1;
+    }
+
+    protected boolean canGrowInto(BlockState state) {
+        return state.isAir();
+    }
+
+
+    protected Block getBodyBlock() {
+        return Blocks.CAVE_VINES_PLANT;
+    }
+
+    protected BlockState updateBodyAfterConvertedFromHead(BlockState head, BlockState body) {
+        return (BlockState)body.setValue(GRAPES, (Boolean)head.getValue(GRAPES));
+    }
+
+    protected BlockState getGrowIntoState(BlockState state, RandomSource random) {
+        return (BlockState)super.getGrowIntoState(state, random).setValue(GRAPES, random.nextFloat() < 0.11F);
     }
 
     public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
         return new ItemStack(ModItems.GRAPES.get());
     }
 
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        if ((Integer)state.getValue(AGE) == 0) {
-            return SAPLING_SHAPE;
-        } else {
-            return (Integer)state.getValue(AGE) < 3 ? MID_GROWTH_SHAPE : super.getShape(state, level, pos, context);
-        }
-    }
-
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return Block.canSupportCenter(level, pos.relative(Direction.UP), Direction.DOWN);
-    }
-
-    public boolean isRandomlyTicking(BlockState state) {
-        return (Integer)state.getValue(AGE) < 3;
-    }
-
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        int i = (Integer)state.getValue(AGE);
-        if (i < 3 && random.nextInt(5) == 0 && level.getRawBrightness(pos.above(), 0) >= 9) {
-            BlockState blockState = (BlockState)state.setValue(AGE, i + 1);
-            level.setBlock(pos, blockState, 2);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
-        }
-
-    }
-
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        int i = (Integer)state.getValue(AGE);
-        boolean bl = i == 3;
-        if (!bl && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
-            return InteractionResult.PASS;
-        } else if (i > 1) {
-            int j = 1 + level.random.nextInt(2);
-            popResource(level, pos, new ItemStack(ModItems.GRAPES.get(), j + (bl ? 1 : 0)));
-            level.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.setValue(AGE, 1);
-            level.setBlock(pos, blockState, 2);
-            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        } else {
-            return super.use(state, level, pos, player, hand, hit);
-        }
+        return GrapeBlock.use(state, level, pos);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
+        super.createBlockStateDefinition(builder);
+        builder.add(GRAPES);
     }
 
     public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
-        return (Integer)state.getValue(AGE) < 3;
+        return !(Boolean)state.getValue(GRAPES);
     }
 
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
@@ -101,13 +101,6 @@ public class GrapeBlock extends BushBlock implements BonemealableBlock {
     }
 
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        int i = Math.min(3, (Integer)state.getValue(AGE) + 1);
-        level.setBlock(pos, (BlockState)state.setValue(AGE, i), 2);
-    }
-
-    static {
-        AGE = BlockStateProperties.AGE_3;
-        SAPLING_SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
-        MID_GROWTH_SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+        level.setBlock(pos, (BlockState)state.setValue(GRAPES, true), 2);
     }
 }
