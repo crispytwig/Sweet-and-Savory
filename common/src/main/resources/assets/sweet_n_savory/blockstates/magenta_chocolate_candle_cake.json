@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "lit=false": {
+            "model": "sweet_n_savory:block/magenta_chocolate_candle_cake"
+        },
+        "lit=true": {
+            "model": "sweet_n_savory:block/magenta_chocolate_candle_cake_lit"
+        }
+    }
+}

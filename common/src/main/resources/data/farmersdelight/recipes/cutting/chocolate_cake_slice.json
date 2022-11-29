@@ -2,13 +2,13 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "sweet_n_savory:cheese"
+      "item": "sweet_n_savory:chocolate_cake"
     }
   ],
   "result": [
     {
-      "count": 4,
-      "item": "sweet_n_savory:cheese_slice"
+      "count": 7,
+      "item": "sweet_n_savory:chocolate_cake_slice"
     }
   ],
   "tool": {
