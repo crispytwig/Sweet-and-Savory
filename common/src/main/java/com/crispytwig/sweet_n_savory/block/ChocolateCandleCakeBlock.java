@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package com.crispytwig.sweet_n_savory.block;
 
 import com.crispytwig.sweet_n_savory.registry.ModBlocks;
