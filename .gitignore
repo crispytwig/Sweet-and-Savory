@@ -116,3 +116,15 @@ run/
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+common/src/main/resources/assets/sweet_n_savory/textures/block/barrel_top.png
+common/src/main/resources/assets/sweet_n_savory/textures/block/barrel_inside.png
+common/src/main/resources/assets/sweet_n_savory/textures/block/barrel_grapes.png
+common/src/main/resources/assets/sweet_n_savory/models/block/grape_barrel.json
+common/src/main/resources/assets/sweet_n_savory/blockstates/grape_barrel.json
+common/src/main/resources/assets/sweet_n_savory/blockstates/grape_barrel.json
+common/src/main/resources/assets/sweet_n_savory/models/block/grape_barrel.json
+common/src/main/resources/assets/sweet_n_savory/blockstates/grape_barrel.json
+common/src/main/resources/assets/sweet_n_savory/textures/block/barrel_grapes.png
+common/src/main/resources/assets/sweet_n_savory/textures/block/barrel_inside.png
+common/src/main/resources/assets/sweet_n_savory/textures/block/barrel_top.png
+common/src/main/resources/assets/sweet_n_savory/textures/item/bread_slice.png

@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "cheese",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "sweet_n_savory:block/cheese",
+		"particle": "sweet_n_savory:block/cheese"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 1],
+			"to": [15, 8, 15],
+			"faces": {
+				"north": {"uv": [3.5, 3.5, 7, 5.5], "texture": "#0"},
+				"east": {"uv": [3.5, 3.5, 7, 5.5], "texture": "#0"},
+				"south": {"uv": [3.5, 3.5, 7, 5.5], "texture": "#0"},
+				"west": {"uv": [3.5, 3.5, 7, 5.5], "texture": "#0"},
+				"up": {"uv": [7, 3.5, 3.5, 0], "texture": "#0"},
+				"down": {"uv": [7, 5.5, 3.5, 9], "texture": "#0"}
+			}
+		}
+	]
+}
